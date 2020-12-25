@@ -1,24 +1,18 @@
-# README
+# To-do apps using Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project creates a To-do app using `Ruby on Rails` framework. This app contains the following features:
+1. User should be able to create a todo
+    A Todo contains
+    - description
+    - end-time
+    - reminder (true/false) - if true a system generated mail would be triggered to the user (10 mins prior to the end time) (right now the email is delivered at the time when the to-do is created).
+2. User can view all the previous todo lists
+3. User can filter the todo list depending on the status whether it's completed or pending (by default all the todo's listed would be in the pending state)
+4. User can edit/delete the existing todo
 
-Things you may want to cover:
+> This project is created as a learning exercise on `Ruby on Rails` framework.
 
-* Ruby version
 
-* System dependencies
+## How to run the app
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Instructions will be added soon.
