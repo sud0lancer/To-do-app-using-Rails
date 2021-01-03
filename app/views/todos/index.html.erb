@@ -55,6 +55,19 @@
   </tbody>
 </table>
 
+<!-- script to filter table rows -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      this2 = "#myTable td:nth-child(6)";
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
 <br>
 
 <%= link_to 'New Todo', new_todo_path ,class:"btn btn-primary" %> &nbsp; 
