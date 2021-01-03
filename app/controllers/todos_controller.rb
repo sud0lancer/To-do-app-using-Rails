@@ -44,6 +44,13 @@ class TodosController < ApplicationController
     redirect_to todos_url, notice: 'Todo was successfully destroyed.'
   end
 
+  # creating a action to show previous todo list
+  def prev
+    puts("works")
+    @todos = Todo.all
+  end
+
+
   private
     def todo_params
       params.require(:todo).permit(:title, :description, :time, :reminder, :email, :status)
