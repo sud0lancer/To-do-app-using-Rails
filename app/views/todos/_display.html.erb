@@ -1,0 +1,63 @@
+<div class="jumbotron">
+  
+  <!-- Display title and ending time -->
+  <h1 class="display-4">
+  <%= @todo.title %>
+  </h1>
+  <h3>
+  <%= ' at ' %>
+  <mark><%= @todo.time.strftime("%d/%m/%Y, %H:%M").to_s + " hrs"%></mark>
+  </h3>
+  
+  <!-- Display description -->
+  <br>
+  <p class="lead">
+  <%= @todo.description%>
+  </p>
+
+
+  <!-- Display status -->
+  <hr class="my-4">
+  <p>
+  <%= 'Status: ' %> 
+  <% if @todo.status %>
+    <strong><%= 'Completed' %></strong>
+  <% else %>
+    <strong><%= 'Pending' %></strong>
+  <% end %></p>
+
+
+  <!-- Display if reminder is set (true or false) -->
+  <p>
+  <%= 'Reminder: ' %> <strong><%= @todo.reminder.to_s %></strong>
+  <% if @todo.email != "" %>
+    <%= '( ' + @todo.email.to_s + ' )'%>
+  <% end %>
+  <br>
+  <em><small class="text-muted">
+    <%= "(if Reminder is set to :true, an e-mail will be sent to the provided e-mail address, 10 minutes before the reminder time)" %>
+  </small></em>
+  </p>
+
+  <!-- Display remaining time(if any) -->
+  <hr class="my-4">
+  <h1 class="display-5">
+  <% current_datetime = DateTime.now %>
+  <% remaining_time = @todo.time - current_datetime 
+      hours = remaining_time/(60*60)
+      hours_to_integer = hours.to_i
+      minutes = (hours - hours_to_integer)*60
+      minutes_to_integer = minutes.to_i
+      seconds = (minutes - minutes_to_integer)*60
+      seconds_to_integer = seconds.to_i
+  %>
+  <% if hours_to_integer >= 0 %>
+    <%= 'Remaining time: ' %>
+    <mark>
+    <%= hours_to_integer.to_s + ":" + minutes_to_integer.to_s + ":" + seconds_to_integer.to_s + " hrs"%></mark>
+  <% else %>
+    <mark>
+    <%= 'Event expired.' %></mark>
+  <% end %>
+  </h1>
+</div>

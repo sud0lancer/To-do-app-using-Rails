@@ -6,7 +6,6 @@ class CreateTodos < ActiveRecord::Migration[6.1]
       t.datetime :time
       t.boolean :reminder
       t.string :email
-      t.status :boolean
 
       t.timestamps
     end

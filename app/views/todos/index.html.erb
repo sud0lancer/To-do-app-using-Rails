@@ -1,9 +1,63 @@
-<h1>Articles</h1>
+<h1>Todos</h1>
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<hr class="my-4">
 
-<ul>
-  <% @todos.each do |todo| %>
-    <li>
-      <%= todo.title %>
-    </li>
-  <% end %>
-</ul>
+<!-- Condition for displaying current or expired todos (not woorking right now)-->
+<!-- Condition goes here -->
+
+
+<table class="table table-striped table-dark table-hover table-sm align-middle">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Event</th>
+      <th>End time</th>
+      <th>Reminder</th>
+      <th>Email</th>
+      <th>Status</th>      
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id="myTable">
+    <% @todos.each do |todo| %>
+      <% if todo.time && todo.time > DateTime.now %>
+        <tr>
+          <td><%= todo.id%> &nbsp; </td>
+          <td>
+            <b>
+            <%= link_to todo.title, todo%></b><br>
+            
+            <em><small>
+            <%= todo.description %></small></em>
+          </td>
+          <td>
+            <b>
+            <%= todo.time.strftime("%R") + ' hrs'%></b><br>
+            <%= todo.time.strftime("%d-%b-%Y") %>
+          </td>
+          <td><%= todo.reminder %></td>
+          <td><%= todo.email %></td>
+          <td id="status">
+            <% if todo.status %>
+              <b><%= 'Completed' %></b>
+            <% else %>
+              <b><%= 'Pending' %></b>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', todo %></td>
+          <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+          <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo', new_todo_path ,class:"btn btn-primary" %> &nbsp; 
+
+<hr class='my-4'>
+
