@@ -15,6 +15,8 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     if @todo.save
+      # tell the mailer to send a mail 10minutes prior to deadline(right now it will deliver instantly)
+      NotificationMailer.notify_mail(@todo).deliver_now
       redirect_to @todo, notice: 'Todo was successfully created.' 
     else
       render :new

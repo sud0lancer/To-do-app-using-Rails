@@ -1,0 +1,9 @@
+<h1>
+Notification Alert<h1>
+<h3>
+This is regarding the expiry of your To-do item:<br></h3>
+<%= 'Title: ' + @todo.title %><br>
+<%= 'Description: ' + @todo.description %><br>
+<%= 'End Time: ' + @todo.time.to_s %><br>
+<%= 'Reminder: ' + @todo.reminder.to_s %><br>
+<%= 'Status: ' + @todo.status.to_s %><br>
